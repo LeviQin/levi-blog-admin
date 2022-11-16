@@ -1,4 +1,4 @@
-import Layout from "../layout/Index.vue";
+import Layout from "@/layout/Index.vue";
 
 export default [
     {
@@ -10,6 +10,7 @@ export default [
         },
         meta: {
             title: "首页",
+            icon: "box-home"
         },
         children: [
             {
@@ -17,15 +18,35 @@ export default [
                 name: "Dashboard",
                 meta: {
                     title: "首页",
+                    icon: "box-home"
                 },
-                component: () => import("../views/dashboard/Index.vue"),
+                component: () => import("@/views/dashboard/Index.vue"),
+            },
+        ],
+    },
+    {
+        path: "/settings",
+        name: "Settings",
+        component: Layout,
+        meta: {
+            title: "系统设置",
+        },
+        children: [
+            {
+                path: "/settings",
+                name: "Settings",
+                meta: {
+                    title: "系统设置",
+                    icon: "box-home"
+                },
+                component: () => import("@/views/dashboard/Index.vue"),
             },
         ],
     },
     {
         path: "/login",
         name: "Login",
-        component: () => import("../views/login/Index.vue"),
+        component: () => import("@/views/login/Index.vue"),
         meta: {
             title: "登录",
         },
