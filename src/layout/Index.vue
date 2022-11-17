@@ -6,7 +6,7 @@
     <div class="menu" :style="`width: ${menuWitdh}`">
       <Menu />
     </div>
-    <div class="content">
+    <div class="mian-content">
       <router-view></router-view>
     </div>
   </div>
@@ -20,7 +20,7 @@ import { watch, ref } from "vue";
 import Header from "./header/Index.vue";
 import Footer from "./footer/Index.vue";
 import Menu from "./menu/Index.vue";
-import { menuInfoStore } from "../store";
+import { menuInfoStore } from "@/store";
 import { storeToRefs } from "pinia";
 
 const menuInfo = menuInfoStore();
@@ -48,7 +48,11 @@ watch(isCollapse, () => {
 .mian {
   display: flex;
 }
-.content {
+.mian-content {
   width: 100%;
+  height: calc(100vh - 120px);
+  overflow: auto;
+  overflow-x: hidden;
+  min-width: 1000px;
 }
 </style>

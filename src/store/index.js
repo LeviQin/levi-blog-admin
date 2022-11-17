@@ -21,7 +21,6 @@ export const menuInfoStore = defineStore(Names.MENU, {
     state: () => {
         return {
             isCollapse: false,
-            menuLisr: [],
         }
     },
     getters: {

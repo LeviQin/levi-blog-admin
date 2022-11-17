@@ -15,6 +15,9 @@
           ><Fold
         /></el-icon>
       </div>
+      <div class="text-card">
+        <span>欢迎进入后台管理系统</span>
+      </div>
     </div>
     <div class="content-rt">
       <User />
@@ -48,6 +51,7 @@ const clickFold = () => {
     width: 50%;
     display: flex;
     align-items: center;
+    min-width: 450px;
     .logo-card {
       padding: 0 15px;
       display: flex;
@@ -64,6 +68,10 @@ const clickFold = () => {
       span {
         cursor: pointer;
       }
+    }
+    .text-card {
+      font-size: 14px;
+      margin-left: 40px;
     }
     .button-card {
       display: flex;

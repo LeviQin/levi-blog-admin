@@ -1,65 +1,43 @@
 <template>
   <div class="content">
     <el-menu
-      default-active="1"
+      :default-active="activeMenu"
       class="el-menu-vertical-demo"
       :collapse="isCollapse"
-      @open="handleOpen"
-      @close="handleClose"
+      :active-text-color="variables.menuActiveText"
+      :unique-opened="true"
     >
-      <el-menu-item index="0">
-        <el-icon><icon-menu /></el-icon>
-        <template #title>首页</template>
-      </el-menu-item>
-      <el-sub-menu index="1">
-        <template #title>
-          <el-icon><location /></el-icon>
-          <span>文章管理</span>
-        </template>
-        <el-menu-item-group>
-          <el-menu-item index="1-1">文章列表</el-menu-item>
-          <el-menu-item index="1-2">item two</el-menu-item>
-          <el-menu-item index="1-3">item three</el-menu-item>
-        </el-menu-item-group>
-      </el-sub-menu>
-      <el-sub-menu index="2">
-        <template #title>
-          <el-icon><location /></el-icon>
-          <span>菜谱管理</span>
-        </template>
-        <el-menu-item-group>
-          <el-menu-item index="2-1">菜谱列表</el-menu-item>
-          <el-menu-item index="2-2">item two</el-menu-item>
-          <el-menu-item index="2-3">item three</el-menu-item>
-        </el-menu-item-group>
-      </el-sub-menu>
-      <el-menu-item index="3">
-        <el-icon><document /></el-icon>
-        <template #title>日志列表</template>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <el-icon><setting /></el-icon>
-        <template #title>系统设置</template>
-      </el-menu-item>
+      <sidebar-item
+        v-for="route in routerList"
+        :key="route.path"
+        :item="route || {}"
+      ></sidebar-item>
     </el-menu>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { Document, Menu as IconMenu, Location, Setting } from "@element-plus/icons-vue";
+import { computed } from "vue";
 import { storeToRefs } from "pinia";
-import { menuInfoStore } from "../../store";
+import { menuInfoStore } from "@/store";
+import { useRouter, useRoute } from "vue-router";
+import SidebarItem from "./SidebarItem.vue";
+import variables from "@/styles/variables.module.scss";
+
+const router = useRouter();
+const route = useRoute();
+
+const routerList = computed(() => {
+  return router.options.routes;
+});
+
+const activeMenu = computed(() => {
+  const { path } = route;
+  return path;
+});
 
 const menuInfo = menuInfoStore();
 const { isCollapse } = storeToRefs(menuInfo);
-
-const handleOpen = (key, keyPath) => {
-  console.log(key, keyPath);
-};
-const handleClose = (key, keyPath) => {
-  console.log(key, keyPath);
-};
 </script>
 
 <style lang="scss" scoped>

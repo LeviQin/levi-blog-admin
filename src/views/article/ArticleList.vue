@@ -1,5 +1,5 @@
 <template>
-  <div class="content">set</div>
+  <div class="content">ArticleList</div>
 </template>
 
 <script setup>

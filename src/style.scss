@@ -7,8 +7,8 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-  --theme-color: #fff;
-  --theme-bg-color: #21252b;
+  --theme-color: #21252b;
+  --theme-bg-color: #fff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -77,6 +77,15 @@ body {
   height: 100%;
 }
 
+li {
+  list-style: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
   height: 100%;
 }
@@ -90,6 +99,8 @@ body {
   :root {
     color: #213547;
     background-color: #ffffff;
+    --theme-color: #fff;
+    --theme-bg-color: #21252b;
   }
 
   a:hover {
@@ -99,4 +110,14 @@ body {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1a1a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
 }

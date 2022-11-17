@@ -34,10 +34,23 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
-let userName = ref("leviqin");
-let passWord = ref("123456");
+let userName = ref("");
+let passWord = ref("");
 
-const userLogin = async () => {};
+const userLogin = async () => {
+  if (userName.value === "leviqin" && passWord.value === "123456") {
+    ElEMessage({
+      type: "success",
+      message: "登录成功",
+    });
+    router.push("/");
+  } else {
+    ElEMessage({
+      type: "error",
+      message: "登录失败！请检查账户密码是否正确",
+    });
+  }
+};
 </script>
 
 <style lang="scss" scoped>

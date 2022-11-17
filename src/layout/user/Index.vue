@@ -15,14 +15,14 @@
       <span>levi</span>
     </div>
     <div class="operation-card">
-      <el-dropdown trigger="click">
+      <el-dropdown trigger="click" @command="commandItem">
         <el-icon class="operation-icon"><Operation /></el-icon>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item>后台首页</el-dropdown-item>
-            <el-dropdown-item>账户中心</el-dropdown-item>
-            <el-dropdown-item>访问管理</el-dropdown-item>
-            <el-dropdown-item>退出登录</el-dropdown-item>
+            <el-dropdown-item command="dashboard">后台首页</el-dropdown-item>
+            <el-dropdown-item command="account">账户中心</el-dropdown-item>
+            <el-dropdown-item command="access">访问管理</el-dropdown-item>
+            <el-dropdown-item command="logout">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -33,6 +33,46 @@
 <script setup>
 import { ref } from "vue";
 import { Bell, Operation } from "@element-plus/icons-vue";
+import { useRouter } from "vue-router";
+import { ElMessageBox } from "element-plus";
+import { ElEMessage } from "@/utils/resetMessage";
+
+const router = useRouter();
+
+const commandItem = (val) => {
+  const commandMap = {
+    dashboard: toPathPage,
+    account: toPathPage,
+    access: toPathPage,
+    logout: logout,
+  };
+  commandMap[val](val);
+};
+
+const toPathPage = (val) => {
+  router.push(`/${val}`);
+};
+
+const logout = () => {
+  ElMessageBox.confirm("是否退出本次登录?", "提示", {
+    confirmButtonText: "退出",
+    cancelButtonText: "取消",
+    type: "warning",
+  })
+    .then(() => {
+      router.push(`/login`);
+      ElEMessage({
+        type: "success",
+        message: "退出成功",
+      });
+    })
+    .catch(() => {
+      ElEMessage({
+        type: "info",
+        message: "取消退出",
+      });
+    });
+};
 </script>
 
 <style lang="scss" scoped>
