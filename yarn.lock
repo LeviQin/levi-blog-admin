@@ -1693,6 +1693,11 @@ make-dir@^3.0.0:
   dependencies:
     semver "^6.0.0"
 
+md-editor-v3@^2.4.1:
+  version "2.4.1"
+  resolved "https://registry.npmmirror.com/md-editor-v3/-/md-editor-v3-2.4.1.tgz#1a9f28f0758844bf271362b14d5fd6b8961dc390"
+  integrity sha512-ORI1g4bQK+6NkTKriizqXYd0wtrchhP2bnnxS8u0P2UX8/A7kWBjb9jSUAqiTDVWpi8RrJ4/OyUh+Njb5krEEg==
+
 mdn-data@2.0.14:
   version "2.0.14"
   resolved "https://registry.npmmirror.com/mdn-data/-/mdn-data-2.0.14.tgz#7113fc4281917d63ce29b43446f701e68c25ba50"

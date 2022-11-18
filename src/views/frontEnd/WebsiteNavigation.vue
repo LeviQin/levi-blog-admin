@@ -210,6 +210,19 @@ let toolMap = ref([
     title: "Boxicons",
     id: 5,
   },
+  {
+    url: "https://www.yuque.com/",
+    image:
+      "https://gw.alipayobjects.com/zos/bmw-prod/6a60c494-f07d-415c-8e21-f921226a24e5.svg",
+    title: "语雀",
+    id: 6,
+  },
+  {
+    url: "https://note.youdao.com/",
+    image: "https://note.youdao.com/_nuxt/img/ynote-logo.d8ea7de.png",
+    title: "有道云笔记",
+    id: 7,
+  },
 ]);
 
 const toSitePage = (url) => {

@@ -121,3 +121,29 @@ ul {
   align-items: center;
   height: 80px;
 }
+
+.header {
+  height: 60px;
+  background: var(--theme-bg-color);
+}
+
+.footer {
+  height: 60px;
+  background: var(--theme-bg-color);
+}
+
+.menu {
+  background: var(--theme-bg-color);
+}
+
+.mian {
+  display: flex;
+}
+
+.mian-content {
+  width: 100%;
+  height: calc(100vh - 120px);
+  overflow: auto;
+  overflow-x: hidden;
+  min-width: 1000px;
+}

@@ -7,7 +7,7 @@
       <div class="title-card">
         <span @click="router.push(`/`)">Levi博客管理</span>
       </div>
-      <div class="button-card">
+      <div class="button-card" v-if="isFold">
         <el-icon v-if="isCollapse" class="button-icon" size="28" @click="clickFold"
           ><Expand
         /></el-icon>
@@ -26,11 +26,19 @@
 </template>
 
 <script setup>
+import { defineProps } from "vue";
 import { useRouter } from "vue-router";
 import User from "../user/Index.vue";
 import { Expand, Fold } from "@element-plus/icons-vue";
 import { menuInfoStore } from "@/store";
 import { storeToRefs } from "pinia";
+
+const props = defineProps({
+  isFold: {
+    type: Boolean,
+    default: true,
+  },
+});
 
 const router = useRouter();
 
