@@ -42,8 +42,8 @@ const props = defineProps({
 
 const router = useRouter();
 
-const menuInfo = menuInfoStore();
-const { isCollapse } = storeToRefs(menuInfo);
+const menuStore = menuInfoStore();
+const { isCollapse } = storeToRefs(menuStore);
 
 const clickFold = () => {
   isCollapse.value = !isCollapse.value;

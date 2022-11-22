@@ -35,7 +35,7 @@ import { login } from "@/api/user";
 import { timeFix } from "@/utils/utils";
 import { userInfoStore } from "@/store";
 
-const userInfo = userInfoStore();
+const userStore = userInfoStore();
 
 const router = useRouter();
 
@@ -50,8 +50,8 @@ const userLogin = async () => {
   const res = await login(params);
   const { code, data, error } = res.data;
   if (code === 200) {
-    userInfo.setToken(data.token);
-    userInfo.setUserName(data.userName);
+    userStore.setToken(data.token);
+    userStore.setUserInfo(data);
     ElEMessage({
       type: "success",
       message: `登录成功，${timeFix()}${data.userName}！`,

@@ -5,17 +5,17 @@ import { getToken, setToken, removeToken } from "@/utils/auth";
 export const userInfoStore = defineStore(Names.USER, {
     state: () => {
         return {
-            name: "",
+            userInfo: "",
             token: getToken(),
         }
     },
     getters: {
         getToken: state => state.token,
-        getUserName: state => {
-            if (!state.userName) {
-                state.userName = JSON.parse(localStorage.getItem("userName"));
+        getUserInfo: state => {
+            if (!state.userInfo) {
+                state.userInfo = JSON.parse(localStorage.getItem("USER_INFO"));
             }
-            return state.userName
+            return state.userInfo
         },
     },
 
@@ -24,15 +24,16 @@ export const userInfoStore = defineStore(Names.USER, {
             this.token = token;
             setToken(token);
         },
-        setUserName(userName) {
-            this.name = userName;
-            localStorage.setItem("userName", JSON.stringify(userName))
+        setUserInfo(userInfo) {
+            this.userInfo = userInfo;
+            localStorage.setItem("USER_INFO", JSON.stringify(userInfo))
         },
         // 用户注销
         handleLogOut() {
             this.token = "";
             removeToken();
-            this.name = "";
+            this.userInfo = "";
+            localStorage.removeItem("USER_INFO");
         },
         // 删除token
         resetToken() {

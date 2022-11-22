@@ -23,8 +23,8 @@ import Menu from "./menu/Index.vue";
 import { menuInfoStore } from "@/store";
 import { storeToRefs } from "pinia";
 
-const menuInfo = menuInfoStore();
-const { isCollapse } = storeToRefs(menuInfo);
+const menuStore = menuInfoStore();
+const { isCollapse } = storeToRefs(menuStore);
 
 let menuWitdh = ref("200px");
 

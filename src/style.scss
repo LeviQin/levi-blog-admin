@@ -148,3 +148,9 @@ ul {
   overflow-x: hidden;
   min-width: 1000px;
 }
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

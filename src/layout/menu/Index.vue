@@ -36,8 +36,8 @@ const activeMenu = computed(() => {
   return path;
 });
 
-const menuInfo = menuInfoStore();
-const { isCollapse } = storeToRefs(menuInfo);
+const menuStore = menuInfoStore();
+const { isCollapse } = storeToRefs(menuStore);
 </script>
 
 <style lang="scss" scoped>
