@@ -6,6 +6,8 @@ import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 import { createPinia } from "pinia";
 
+import "./permission";
+
 const pinia = createPinia();
 import * as Icons from "@element-plus/icons-vue";
 

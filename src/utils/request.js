@@ -1,10 +1,11 @@
 import axios from "axios";
-// import store from "@/store";
-import { ElNotification, MessageBox } from "element-plus";
+import { userInfoStore } from "@/store";
+import { storeToRefs } from "pinia";
+import { ElNotification } from "element-plus";
+import { getBaseURL } from "@/utils/judgmentEnv";
 
-const baseUrl = "http://10.10.0.136:8080"
 const service = axios.create({
-    baseURL: baseUrl + "/",
+    baseURL: getBaseURL() + "/",
     timeout: 20000
 });
 
@@ -12,7 +13,9 @@ const service = axios.create({
 service.interceptors.request.use(
     config => {
         // 在发送请求之前做一些事情
-        // config.headers["token"] = store.getters.token
+        const userInfo = userInfoStore();
+        const { token } = storeToRefs(userInfo);
+        config.headers["token"] = token;
         config.headers["Content-Type"] = "application/json;charset=utf-8"
         // get请求时添加一个data参数，解决get请求无法设置content-type的问题
         if (config.method === "get") config.data = { unused: 0 }

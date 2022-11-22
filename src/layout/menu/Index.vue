@@ -41,6 +41,9 @@ const { isCollapse } = storeToRefs(menuInfo);
 </script>
 
 <style lang="scss" scoped>
+.content {
+  width: 200px;
+}
 .el-menu-vertical-demo {
   background: var(--theme-bg-color);
   height: calc(100vh - 120px);

@@ -26,10 +26,10 @@ import { storeToRefs } from "pinia";
 const menuInfo = menuInfoStore();
 const { isCollapse } = storeToRefs(menuInfo);
 
-let menuWitdh = ref("240px");
+let menuWitdh = ref("200px");
 
 watch(isCollapse, () => {
-  menuWitdh.value = isCollapse.value ? "63px" : "240px";
+  menuWitdh.value = isCollapse.value ? "63px" : "200px";
 });
 </script>
 

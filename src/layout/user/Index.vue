@@ -36,6 +36,9 @@ import { Bell, Operation } from "@element-plus/icons-vue";
 import { useRouter } from "vue-router";
 import { ElMessageBox } from "element-plus";
 import { ElEMessage } from "@/utils/resetMessage";
+import { userInfoStore } from "@/store";
+
+const userInfo = userInfoStore();
 
 const router = useRouter();
 
@@ -60,6 +63,7 @@ const logout = () => {
     type: "warning",
   })
     .then(() => {
+      userInfo.handleLogOut();
       router.push(`/login`);
       ElEMessage({
         type: "success",

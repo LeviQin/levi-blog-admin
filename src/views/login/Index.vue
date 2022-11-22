@@ -3,7 +3,7 @@
     <div class="login-form">
       <div class="login-title">Blog后台管理系统</div>
       <div class="login-content">
-        <el-form label-width="80px" label-position="top">
+        <el-form label-width="80px" label-position="top" @keyup.enter="userLogin">
           <el-form-item label="登录账户">
             <el-input
               v-model="userName"
@@ -31,6 +31,11 @@
 import { ref } from "vue";
 import { ElEMessage } from "@/utils/resetMessage";
 import { useRouter } from "vue-router";
+import { login } from "@/api/user";
+import { timeFix } from "@/utils/utils";
+import { userInfoStore } from "@/store";
+
+const userInfo = userInfoStore();
 
 const router = useRouter();
 
@@ -38,16 +43,24 @@ let userName = ref("");
 let passWord = ref("");
 
 const userLogin = async () => {
-  if (userName.value === "leviqin" && passWord.value === "123456") {
+  const params = {
+    userName: userName.value,
+    passWord: passWord.value,
+  };
+  const res = await login(params);
+  const { code, data, error } = res.data;
+  if (code === 200) {
+    userInfo.setToken(data.token);
+    userInfo.setUserName(data.userName);
     ElEMessage({
       type: "success",
-      message: "登录成功",
+      message: `登录成功，${timeFix()}${data.userName}！`,
     });
     router.push("/");
   } else {
     ElEMessage({
       type: "error",
-      message: "登录失败！请检查账户密码是否正确",
+      message: error,
     });
   }
 };
@@ -96,6 +109,9 @@ const userLogin = async () => {
     color: #fff;
     font-size: 20px;
     cursor: pointer;
+    &:hover {
+      background: linear-gradient(to right, #dde3e0, #afcbcc);
+    }
   }
 }
 

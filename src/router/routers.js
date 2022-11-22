@@ -199,6 +199,15 @@ export default [
         hidden: true
     },
     {
+        path: "/m-tips",
+        name: "MTips",
+        component: () => import("@/views/m/Index.vue"),
+        meta: {
+            title: "提示",
+        },
+        hidden: true
+    },
+    {
         path: "/login",
         name: "Login",
         component: () => import("@/views/login/Index.vue"),
