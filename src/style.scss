@@ -76,6 +76,7 @@ html,
 body {
   height: 100%;
   width: 100%;
+  min-width: 1000px;
 }
 
 li {
@@ -89,6 +90,7 @@ ul {
 
 #app {
   height: 100%;
+  width: 100%;
 }
 
 #header {
@@ -146,7 +148,6 @@ ul {
   height: calc(100vh - 120px);
   overflow: auto;
   overflow-x: hidden;
-  min-width: 1000px;
 }
 
 .flex-center {
